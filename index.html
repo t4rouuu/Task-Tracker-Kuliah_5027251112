@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Task Tracker</title>
 
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <main>
+    <h1>Demo Task Tracker</h1>
+
+    <form id="taskForm">
+      <input type="text" id="judul" placeholder="Judul tugas">
+      <input type="text" id="matkul" placeholder="Mata kuliah">
+      <input type="date" id="deadline">
+
+      <button type="submit">Tambah Tugas</button>
+      <p id="error"></p>
+    </form>
+
+    <p id="counter">0 tugas aktif</p>
+
+    <div class="filters">
+      <button class="filter on" data-filter="semua">Semua</button>
+      <button class="filter" data-filter="aktif">Aktif</button>
+      <button class="filter" data-filter="selesai">Selesai</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </main>
+
+</body>
+</html>

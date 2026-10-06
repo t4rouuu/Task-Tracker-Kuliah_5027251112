@@ -1,1 +1,40 @@
 
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 30px;
+}
+
+main {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+input,
+button {
+  padding: 10px;
+}
+
+.filters {
+  margin: 15px 0;
+}
+
+.filter.on {
+  background: black;
+  color: white;
+}
+
+#error {
+  color: red;
+}
+
+li {
+  margin: 10px 0;
+}
