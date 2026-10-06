@@ -33,7 +33,68 @@ function render() {
   counter.textContent = jumlahAktif + " tugas aktif";
 }
 
-render();
+function render() {
+  taskList.textContent = "";
+
+  tugas.forEach(function (tugasItem) {
+    const li = document.createElement("li");
+    li.dataset.id = tugasItem.id;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "cek";
+    checkbox.checked = tugasItem.selesai;
+
+    const info = document.createElement("span");
+
+    info.textContent =
+      tugasItem.judul +
+      " - " +
+      tugasItem.matkul +
+      " - " +
+      tugasItem.deadline;
+
+    const hapus = document.createElement("button");
+    hapus.textContent = "Hapus";
+    hapus.className = "hapus";
+
+    li.append(checkbox, info, hapus);
+    taskList.append(li);
+  });
+
+  const jumlahAktif = tugas.filter(function (tugasItem) {
+    return !tugasItem.selesai;
+  }).length;
+
+  counter.textContent = jumlahAktif + " tugas aktif";
+}
+taskList.addEventListener("click", function (event) {
+  const li = event.target.closest("li");
+
+  if (!li) {
+    return;
+  }
+
+  const id = Number(li.dataset.id);
+
+  if (event.target.classList.contains("cek")) {
+    const tugasItem = tugas.find(function (item) {
+      return item.id === id;
+    });
+
+    tugasItem.selesai = event.target.checked;
+
+    render();
+  }
+
+  if (event.target.classList.contains("hapus")) {
+    tugas = tugas.filter(function (item) {
+      return item.id !== id;
+    });
+
+    render();
+  }
+});
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
